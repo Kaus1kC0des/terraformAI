@@ -10,5 +10,7 @@ __pycache__/
 
 # Python environments
 .venv/
-venv/
+venv
 
+# Local discussion docs
+prd/
