@@ -1,0 +1,14 @@
+# IDE files
+.idea/
+
+# Secrets
+.env
+
+# Python Build Cache Files
+*.pyc
+__pycache__/
+
+# Python environments
+.venv/
+venv/
+
