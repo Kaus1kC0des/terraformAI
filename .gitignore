@@ -14,3 +14,7 @@ venv
 
 # Local discussion docs
 prd/
+
+# Local Test Files
+playground/
+experiments/
