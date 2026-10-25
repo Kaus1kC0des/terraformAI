@@ -1,5 +1,6 @@
 # IDE files
 .idea/
+.vscode/
 
 # Secrets
 .env
@@ -18,3 +19,4 @@ prd/
 # Local Test Files
 playground/
 experiments/
+broken/
