@@ -20,3 +20,7 @@ prd/
 playground/
 experiments/
 broken/
+
+# Terraform directory and files
+.terraform/
+*.tfstate
