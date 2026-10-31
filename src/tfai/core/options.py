@@ -31,6 +31,7 @@ DryRun = Annotated[
 ]
 Yes = Annotated[bool, typer.Option("--yes", help="Skip confirmation.")]
 
+# NOTE
 # Lets commands forward unmodelled terraform flags, e.g. `tfai plan -no-color`.
 # Subcommand options must stay long-only: Click splits `-destroy` into short flags,
 # so a `-y` alias would turn `tfai apply -destroy` into an auto-approve.
