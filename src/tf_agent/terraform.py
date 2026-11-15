@@ -1,4 +1,3 @@
-import json
 
 
 def format_diagnostic(diagnostic: dict) -> str:
@@ -9,5 +8,5 @@ def format_diagnostic(diagnostic: dict) -> str:
     """
     response = [f"{diagnostic.get('severity')} : {diagnostic.get('summary')}"]
 
-    if "range" in diagnostic.keys():
+    if "range" in diagnostic:
         response.append(f"'range' : {diagnostic.get('range').get('filename')}")
