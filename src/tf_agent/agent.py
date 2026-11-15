@@ -60,7 +60,7 @@ def run_agent(client: Client, question: str, workdir: str, max_turns=20) -> str:
                         }
                     )
                 except Exception as e:
-                    logger.error(str(e))
+                    logger.exception(str(e))
                     conversations.append(
                         {
                             "call_id": item.call_id,
