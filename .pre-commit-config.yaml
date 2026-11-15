@@ -1,0 +1,34 @@
+# Checks that run automatically on every `git commit`.
+# If any hook fails, the commit is aborted.
+#
+# Setup (once per clone):   uv run pre-commit install
+# Run by hand on all files: uv run pre-commit run --all-files
+# Skip in an emergency:     git commit --no-verify
+
+repos:
+  # "local" = run commands from this project instead of downloading hook repos.
+  # Every hook uses `uv run`, so it uses the exact ruff/pytest versions in uv.lock.
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check (lint)
+        entry: uv run ruff check
+        language: system
+        types: [python] # runs only on staged .py files; their paths are added to `entry`
+        require_serial: true # one ruff call for all files (cleaner output; ruff is already fast)
+
+      - id: ruff-format
+        name: ruff format (check only)
+        # --check only reports problems and never rewrites your files.
+        # To fix formatting yourself: uv run ruff format .
+        entry: uv run ruff format --check
+        language: system
+        types: [python]
+        require_serial: true
+
+      - id: pytest
+        name: pytest
+        entry: uv run pytest -q
+        language: system
+        pass_filenames: false # run the whole test suite, not `pytest <staged files>`
+        always_run: true # run tests on every commit, even if no .py file changed

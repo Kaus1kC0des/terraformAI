@@ -28,7 +28,7 @@ def run_agent(client: Client, question: str, workdir: str, max_turns=20) -> str:
         calls = [item for item in response.output if item.type == "function_call"]
         if not calls:
             return response.output_text
-            break
+
         for item in response.output:
             if item.type == "function_call":
                 try:

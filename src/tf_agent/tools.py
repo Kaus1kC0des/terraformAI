@@ -5,7 +5,7 @@ from pathlib import Path
 from tfai.core.runner import TfResult, run
 
 
-def tf_result_to_string(result: TfResult):
+def tf_result_to_string(result: TfResult) -> str:
     deny_list = ["argv"]
     result_dict = asdict(result)
     for i in deny_list:
