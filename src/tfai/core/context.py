@@ -11,7 +11,7 @@ INSTALL_HINT = "terraform not found on PATH. Install it: https://developer.hashi
 
 @dataclass
 class TfContext:
-    chdir: str | None = None
+    chdir: str = "."
 
 
 def invoke(

@@ -9,7 +9,12 @@ from tf_agent.tools import functions, general_tools, terraform_tools
 logger = logging.getLogger(__name__)
 
 
-def run_agent(client: Client, question: str, workdir: str, max_turns=20) -> str:
+def run_agent(
+    client: Client,
+    question: str,
+    workdir: str,
+    max_turns=15,
+) -> str:
     conversations = [
         {
             "role": "user",
@@ -60,7 +65,7 @@ def run_agent(client: Client, question: str, workdir: str, max_turns=20) -> str:
                         }
                     )
                 except Exception as e:
-                    logger.exception(str(e))
+                    logger.exception("Tool %s failed", item.name)
                     conversations.append(
                         {
                             "call_id": item.call_id,
@@ -68,6 +73,5 @@ def run_agent(client: Client, question: str, workdir: str, max_turns=20) -> str:
                             "output": json.dumps({"error": str(e)}),
                         }
                     )
-    else:
-        logger.info("Reached MAX_TURNS can't run anymore!")
-        return "Reached MAX_TURNS can't run anymore!"
+    logger.info("Reached MAX_TURNS can't run anymore!")
+    return "Reached MAX_TURNS can't run anymore!"
